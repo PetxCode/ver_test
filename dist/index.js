@@ -7,7 +7,7 @@ const node_http_1 = __importDefault(require("node:http"));
 const express_1 = __importDefault(require("express"));
 const socket_io_1 = require("socket.io");
 const cors_1 = __importDefault(require("cors"));
-const port = 3000;
+const port = 3011;
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 const server = node_http_1.default.createServer(app);
@@ -37,7 +37,7 @@ io.on("connection", (socket) => {
         io.emit("clear", res);
     });
 });
-server.listen(port, () => {
+server.listen(process.env.PORT || port, () => {
     console.clear();
     console.log(`Server is running on port ${port}`);
 });
